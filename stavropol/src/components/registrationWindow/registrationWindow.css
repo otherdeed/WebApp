@@ -1,0 +1,42 @@
+.regWindow{
+    width: 90%;
+    height: 90%;
+    background-color: gray;
+    position: fixed;
+    z-index: 9;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: white;
+}
+.text{
+    text-align: center;
+    font-size: 30px;
+}
+.blogReg{
+    height: 100%;
+    width: 80%;
+}
+.inputBlock{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+}
+.inputReg{
+    font-size: 30px;
+    margin-top: 5%;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+}
+.btnReg{
+    margin-top: 5%;
+    font-size: 25px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+}

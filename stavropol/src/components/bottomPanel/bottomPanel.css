@@ -1,0 +1,26 @@
+.bottomPanel{
+   position:absolute;
+   bottom:0;
+   width:95%;
+   height:50px; 
+   background: rgb(56 66 74);
+   border-radius: 15px;
+   margin-left: auto;
+   margin-right: auto;
+   left: -50%;
+   right: -50%;
+   margin-bottom: 5%;
+}
+.containerBottom{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btnBottom{
+    font-size: 30px;
+    border-radius: 10px;
+    width: 60px;
+    height: 40px;
+    margin-top: 9%;
+    border: none;
+}
