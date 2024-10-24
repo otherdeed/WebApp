@@ -1,7 +1,6 @@
 .regWindow{
     width: 90%;
     height: 90%;
-    background-color: gray;
     position: fixed;
     z-index: 9;
     top: 46%;
@@ -10,13 +9,41 @@
     border-radius: 10px;
     color: white;
 }
+.close{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    font-size: 30px;
+    border-radius: 40px;
+    height: 40px;
+    border: none;
+    text-align: right;
+    background-color: gray;
+    color: white;
+}
+.textReg{
+    width: 60%;
+    height: 20%;
+    background-color: gray;
+    position: fixed;
+    z-index: 9999;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: white;
+}
+.textReg p{
+    text-align: center;
+}
 .text{
     text-align: center;
     font-size: 30px;
 }
-.blogReg{
+.blockReg{
+    background-color: gray;
     height: 100%;
-    width: 80%;
+    width: 100%;
 }
 .inputBlock{
     display: flex;
@@ -26,17 +53,47 @@
     width: 100%;
 }
 .inputReg{
-    font-size: 30px;
+    color: black;
+    font-size: 20px;
+    width: 80%;
     margin-top: 5%;
     background-color: white;
-    border: none;
+    border-color: white;
     border-radius: 10px;
+    height: 30px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+.inputError{
+    color: white;
+    font-size: 20px;
+    width: 80%;
+    margin-top: 5%;
+    background-color: rgb(249, 124, 124);
+    border-color: red;
+    border-radius: 10px;
+    height: 30px;
+    text-align: center;
+    transition-duration: 0.5s;
 }
 .btnReg{
     margin-top: 5%;
     font-size: 25px;
     width: 80%;
+    height: 30px;
     border-radius: 10px;
     border: none;
     background-color: white;
+    transition-duration: 0.5s;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden; /* Скрыть элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible; /* Показать элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
 }
