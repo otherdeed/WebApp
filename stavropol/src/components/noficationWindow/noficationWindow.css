@@ -1,0 +1,12 @@
+.noficationWindow{
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 9;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: white;
+    background-color: gray;
+}
