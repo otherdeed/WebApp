@@ -1,0 +1,34 @@
+.noficationBlock{
+    width: 90%;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 5%;
+    display: block;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
+    transition: 0.5s;
+}
+.closeBtn{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 96%;
+    height: 5px;
+    font-size: 30px;
+    margin-right: 1%;
+    border: none;
+    text-align: right;
+    color: black;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden; /* Скрыть элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible; /* Показать элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
+}

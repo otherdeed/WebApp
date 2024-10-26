@@ -41,7 +41,7 @@ function RegistrationWindow (props){
             fetch('http://localhost/reg.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({dataUser: dataReg}) // Ваши данные для отправки
+                body: JSON.stringify({dataUser: dataReg})
               })
               .then(res => res.json())
               .then(data => {
@@ -59,7 +59,7 @@ function RegistrationWindow (props){
         elem.classList.add('hidden')
     }
         return (
-            <div className="regWindow">
+            <div className="regWindow hidden">
                 <div className="blockReg hidden">
                 <button className="close">
                     <div onClick={() =>Close('regWindow')}>x</div>

@@ -7,6 +7,7 @@ function BottomPanel(props){
         const regWindow = document.querySelector('.regWindow');
        if(!props.statusCheck.isOpenRegWindow){
         blockReg.classList.remove('hidden');
+        regWindow.classList.remove('hidden')
        }
        if(props.statusCheck.isOpenRegWindow){
         textReg.classList.remove('hidden');
@@ -16,19 +17,19 @@ function BottomPanel(props){
     return(
         <div>
             <RegistrationWindow onSuccess={props.onSuccess}/>
-        <div className="bottomPanel">
+        <div className="bottomPanel dark-theme-bottom-panel ">
             <div className="containerBottom">
                 <div className="menu">
-                    <button className="btnBottom" onClick={openWindowReg}>reg</button>
+                    <button className="btnBottom dark-theme-bottom-panel-btn" onClick={openWindowReg}>reg</button>
                 </div>
                 <div className="menu">
-                    <button className="btnBottom">x</button>
+                    <button className="btnBottom dark-theme-bottom-panel-btn">x</button>
                 </div>
                 <div className="menu">
-                    <button className="btnBottom">x</button>
+                    <button className="btnBottom dark-theme-bottom-panel-btn">x</button>
                 </div>
                 <div className="menu">
-                    <button className="btnBottom">x</button>
+                    <button className="btnBottom dark-theme-bottom-panel-btn">x</button>
                 </div>
             </div>
             
