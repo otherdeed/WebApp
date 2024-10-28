@@ -60,10 +60,10 @@ function RegistrationWindow (props){
     }
         return (
             <div className="regWindow hidden">
-                <div className="blockReg hidden">
-                <button className="close">
+                <div className="blockReg dark-theme-regWindow hidden">
+                <div className="close-reg-window">
                     <div onClick={() =>Close('regWindow')}>x</div>
-                </button>
+                </div>
                     <div className="text">
                         Пройдите регистрацию
                     </div>
@@ -71,13 +71,13 @@ function RegistrationWindow (props){
                         <input type="text" id="name" className="inputReg" placeholder="Введите имя" />
                         <input type="email" id="email" className="inputReg" placeholder="Введите почту" />
                         <input type="number" id="number" className="inputReg" placeholder="Введите номер" />
-                        <button className="btnReg" onClick={AppcetReg}>Зарегистрироваться</button>
+                        <button className="btnReg dark-theme-regWindow-btnReg" onClick={AppcetReg}>Зарегистрироваться</button>
                     </div>
                 </div>
-                <div className="textReg hidden ">
-                <button className="close">
+                <div className="textReg dark-theme-regWindow hidden ">
+                <div className="close-reg-window">
                     <div onClick={() =>Close('regWindow')} >x</div>
-                </button>
+                </div>
                     <p>Ваши данные успешно отправлены, в скором времени мы рассмотрим вашу заявку</p>
                 </div>
             </div>

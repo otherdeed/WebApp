@@ -10,7 +10,7 @@
     color: white; 
     transition: 0.5s;
 }
-.close{
+.close-reg-window{
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
@@ -19,13 +19,11 @@
     height: 40px;
     border: none;
     text-align: right;
-    background-color: gray;
     color: white;
 }
 .textReg{
     width: 60%;
-    height: 20%;
-    background-color: gray;
+    height: 22%;
     position: fixed;
     z-index: 9999;
     top: 46%;
@@ -42,7 +40,6 @@
     font-size: 30px;
 }
 .blockReg{
-    background-color: gray;
     height: 100%;
     width: 100%;
 }
@@ -84,8 +81,21 @@
     height: 30px;
     border-radius: 10px;
     border: none;
-    background-color: white;
     transition-duration: 0.5s;
+}
+.dark-theme-regWindow{
+    background-color: gray;
+}
+.light-theme-regWindow{
+    background-color: #6cace6;
+}
+.dark-theme-regWindow-btnReg{
+    background-color: white;
+    color: black;
+}
+.light-theme-regWindow-btnReg{
+    background-color: rgb(36 129 204);
+    color: white;
 }
 .hidden {
     opacity: 0;

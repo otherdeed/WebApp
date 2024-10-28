@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './settingWindow.css';
 import SettingBlock from './settingBlock/settingBlock'
 function SettingWindow({setting, changeStatusSetting}) {
@@ -7,8 +6,8 @@ function SettingWindow({setting, changeStatusSetting}) {
         elem.classList.add('hidden')
     }
     return (
-        <div className='settingWindow hidden'>
-            <div className='close'>
+        <div className='settingWindow dark-theme-setting-window hidden'>
+            <div className='close-setting-window'>
                 <div onClick={() => Close('settingWindow')}>x</div>
             </div>
             <div className='title'>Настройки</div>

@@ -1,7 +1,6 @@
 body{
     margin: 0 auto;
     background-color: #18222d;
-    height: 100%;
     transition: 0.5s;
 }
 .dark-theme{

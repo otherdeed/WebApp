@@ -1,0 +1,17 @@
+.centerButton{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 150px;
+}
+.tree{
+    width: 300px;
+    height: 300px;
+}
+.dark-theme-central-btn{
+    background-color: #efefef
+}
+.light-theme-central-btn{
+    background-color: #2582cb;
+}

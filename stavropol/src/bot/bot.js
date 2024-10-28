@@ -2,7 +2,7 @@ require('dotenv').config()
 const {Bot, GrammyError, HttpError} = require('grammy')
 
 const bot = new Bot(process.env.BOT_API_KEY)
-
+const webUrl = 'https://192.168.23.13:3000'
 bot.api.setMyCommands([
     {
         command: 'start',
@@ -10,8 +10,17 @@ bot.api.setMyCommands([
     }
 ])
 bot.command('start', async (ctx) =>{
-    await ctx.reply('<b>Hello</b>, I am Bot',{
-       parse_mode:'HTML'
+    await ctx.reply('Hello, I am Bot',{
+        reply_markup:{
+            inline_keyboard:[
+                [
+                    {
+                        text:'Open Web App',
+                        web_app:{url:webUrl}
+                    }
+                ]
+            ]
+        }
     })
     console.log(ctx.from);
 })

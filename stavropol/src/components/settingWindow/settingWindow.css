@@ -9,13 +9,11 @@
     border-radius: 10px;
     color: white; 
     transition: 0.5s;
-    background-color: gray;
 }
 .title{
     width: 100%;
     text-align: center;
     font-size: 30px;
-    background-color: gray;
 }
 .setBlock{
     padding-left: 5%;
@@ -26,6 +24,18 @@
     width: 70%;
     margin-left: 1%;
     margin-top: 5%;
+}
+.close-setting-window{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    z-index: 999;
+    font-size: 30px;
+    border-radius: 40px;
+    height: 40px;
+    border: none;
+    text-align: right;
+    color: white;
 }
 .custom-checkbox {
 	cursor: pointer;
@@ -82,6 +92,12 @@
 .custom-checkbox.checked .custom-checkbox-button:after {
 	left: 32px;
 	background: #1967c3;
+}
+.dark-theme-setting-window{
+    background-color: gray;
+}
+.light-theme-setting-window{
+    background-color: #6cace6;
 }
 .hidden {
     opacity: 0;

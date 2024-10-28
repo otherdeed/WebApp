@@ -1,7 +1,12 @@
 import './topPanel.css';
 import NoficationWindow from '../noficationWindow/noficationWindow';
 import SettingWindow from '../settingWindow/settingWindow';
+import { useState , useEffect } from 'react';
 function TopPanel({ notifications, onRemoveNotification, setting, changeStatusSetting}) {
+    const[count, setCount] = useState(notifications.length);
+    useEffect(() => {
+        setCount(notifications.length);
+    })
     function OpenWindow(tagName){
         const elem = document.querySelector('.'+tagName)
         elem.classList.remove('hidden')
@@ -13,10 +18,12 @@ function TopPanel({ notifications, onRemoveNotification, setting, changeStatusSe
             <div className="topPanel">
                 <div className="containerTop">
                     <div className="setting">
-                        <button className="btnTop" onClick={() =>OpenWindow('settingWindow')}>s</button>
+                        <button className="btnTop dark-theme-top-panel-btn" onClick={() =>OpenWindow('settingWindow')}>s</button>
                     </div>
                     <div className="nofication">
-                        <button className="btnTop" onClick={() =>OpenWindow('notificationsWindows')}>n</button>
+                        <button className="btnTop dark-theme-top-panel-btn" onClick={() =>{OpenWindow('notificationsWindows')}}>
+                            {count}
+                        </button>
                     </div>
                 </div>
             </div>
