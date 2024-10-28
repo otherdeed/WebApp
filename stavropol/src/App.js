@@ -94,11 +94,13 @@ class App extends React.Component {
         document.querySelector('.notificationsWindows').classList.add(`${themeClass}-notificationsWindows`);
         document.querySelector('.notificationsWindows').classList.remove(`${oppositeThemeClass}-notificationsWindows`);
         document.querySelector('.textReg').classList.add(`${themeClass}-regWindow`);
-        document.querySelector('.textReg').classList.remove(`${oppositeThemeClass}-regWindow-`);
+        document.querySelector('.textReg').classList.remove(`${oppositeThemeClass}-regWindow`);
         document.querySelector('.btnReg').classList.add(`${themeClass}-regWindow-btnReg`);
         document.querySelector('.btnReg').classList.remove(`${oppositeThemeClass}-regWindow-btnReg`)
         document.querySelector('.centerButton').classList.add(`${themeClass}-central-btn`);
         document.querySelector('.centerButton').classList.remove(`${oppositeThemeClass}-central-btn`)
+        document.querySelector('.treeWindow').classList.add(`${themeClass}-treeWindow`);
+        document.querySelector('.treeWindow').classList.remove(`${oppositeThemeClass}-treeWindow`)
         const buttonsBottomPanel = document.querySelectorAll('.btnBottom');
         buttonsBottomPanel.forEach(button => {
             button.classList.add(`${themeClass}-bottom-panel-btn`);

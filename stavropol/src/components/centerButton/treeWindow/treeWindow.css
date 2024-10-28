@@ -1,0 +1,32 @@
+.treeWindow{
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 9;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: 0.5s;
+}
+.container-tree{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.examplePhoto{
+    width: 40%;
+    height: 150px;
+    background-color: aqua;
+    margin-top: 4%;
+}
+.dark-theme-treeWindow{
+    background-color: gray;
+}
+.light-theme-treeWindow{
+    background-color: #6cace6;
+}
