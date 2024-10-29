@@ -21,8 +21,41 @@
 .examplePhoto{
     width: 40%;
     height: 150px;
-    background-color: aqua;
+    background-color: white;
+    color: black;
     margin-top: 4%;
+    text-align: center;
+}
+.description{
+    width: 100%;
+    font-size: 15px;
+    margin-top: 4%;
+    text-align: center;
+}
+.btn-tree{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 20px;
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    transition-duration: 0.5s;
+}
+.uploadedImage{
+    width: 40%;
+    height: 150px;
+}
+.button-tree{
+    margin-left: 17%;
+}
+.dark-theme-btn-tree{
+    background-color: white;
+    color: black;
+}
+.light-theme-btn-tree{
+    background-color: rgb(36 129 204);
+    color: white;
 }
 .dark-theme-treeWindow{
     background-color: gray;

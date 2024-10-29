@@ -101,6 +101,8 @@ class App extends React.Component {
         document.querySelector('.centerButton').classList.remove(`${oppositeThemeClass}-central-btn`)
         document.querySelector('.treeWindow').classList.add(`${themeClass}-treeWindow`);
         document.querySelector('.treeWindow').classList.remove(`${oppositeThemeClass}-treeWindow`)
+        document.querySelector('.btn-tree').classList.add(`${themeClass}-btn-tree`);
+        document.querySelector('.btn-tree').classList.remove(`${oppositeThemeClass}-btn-tree`)
         const buttonsBottomPanel = document.querySelectorAll('.btnBottom');
         buttonsBottomPanel.forEach(button => {
             button.classList.add(`${themeClass}-bottom-panel-btn`);
