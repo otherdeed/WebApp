@@ -1,9 +1,9 @@
-.treeWindow{
+.treeWindow {
     width: 90%;
     height: 90%;
     position: fixed;
     z-index: 9;
-    top: 46%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -12,54 +12,93 @@
     flex-direction: column;
     align-items: stretch;
     transition: 0.5s;
+    padding: 20px; /* Отступы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень */
 }
-.container-tree{
+
+.close {
+    cursor: pointer;
+    align-self: flex-end; /* Выравнивание кнопки закрытия */
+    font-size: 24px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+.container-tree {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-bottom: 20px; /* Отступ снизу */
 }
-.examplePhoto{
+
+.examplePhoto {
     width: 40%;
     height: 150px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
     color: black;
     margin-top: 4%;
     text-align: center;
+    border-radius: 8px; /* Скругленные углы */
+    padding: 10px; /* Отступы внутри */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень */
 }
-.description{
+
+.description {
     width: 100%;
     font-size: 15px;
     margin-top: 4%;
     text-align: center;
 }
-.btn-tree{
+
+.btn-tree {
     text-align: center;
     margin-top: 5%;
     font-size: 20px;
     width: 80%;
-    height: 30px;
+    height: 40px; /* Увеличенная высота кнопки */
     border-radius: 10px;
     border: none;
-    transition-duration: 0.5s;
+    color: white;
+    transition: background-color 0.3s;
 }
-.uploadedImage{
-    width: 40%;
-    height: 150px;
+
+.inputBlock {
+    margin-top: 20px; /* Отступ сверху */
 }
-.button-tree{
-    margin-left: 17%;
+
+.uploadedImages {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос на следующую строку */
+    justify-content: space-around; /* Распределяем изображения равномерно */
+}
+
+.uploadedImage {
+    margin: 10px; /* Отступы между изображениями */
+    width: 200px; /* Фиксированная ширина */
+    height: auto; /* Автоматическая высота */
+    box-sizing: border-box; /* Включаем padding и border в размер элемента */
+}
+
+.uploadedImage img {
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: auto; /* Сохраняет пропорции */
+    display: block; /* Убираем лишние отступы снизу */
 }
 .dark-theme-btn-tree{
     background-color: white;
     color: black;
 }
-.light-theme-btn-tree{
+    .light-theme-btn-tree{
     background-color: rgb(36 129 204);
     color: white;
 }
 .dark-theme-treeWindow{
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.9);
 }
 .light-theme-treeWindow{
-    background-color: #6cace6;
+    background-color: rgba(108, 172, 230, 0.9); /* Полупрозрачный фон */
 }

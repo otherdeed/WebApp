@@ -8,7 +8,7 @@ function SettingWindow({setting, changeStatusSetting}) {
     return (
         <div className='settingWindow dark-theme-setting-window hidden'>
             <div className='close-setting-window'>
-                <div onClick={() => Close('settingWindow')}>x</div>
+                <div onClick={() => Close('settingWindow')}>✖</div>
             </div>
             <div className='title'>Настройки</div>
             <div className='container'>

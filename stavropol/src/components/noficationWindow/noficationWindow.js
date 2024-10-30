@@ -9,7 +9,7 @@ function NoficationWindow({ notifications = [], onRemoveNotification}) {
     return (
         <div className='notificationsWindows dark-theme-notificationsWindows hidden'>
             <div className='close'>
-                <div onClick={() => Close('notificationsWindows')}>x</div>
+                <div onClick={() => Close('notificationsWindows')}>✖</div>
             </div>
             {notifications.length > 0 ? (
                 notifications.map(notification => (

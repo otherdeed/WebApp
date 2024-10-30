@@ -37,7 +37,7 @@ function TreeWindow() {
 
     return (
         <div className='treeWindow dark-theme-treeWindow hidden'>
-            <div className='close' onClick={() => Close('treeWindow')}>x</div>
+            <div className='close' onClick={() => Close('treeWindow')}>✖</div>
             <div className='title'>Добавить дерево</div>
             <div className='container-tree'>
                 <ExamplePhoto />
@@ -48,9 +48,6 @@ function TreeWindow() {
             <div className="description">
                 Здесь находится подробное описание что нужно сделать для отправки заявки
             </div>
-            <div className='button-tree'>
-                <button className="btn-tree dark-theme-btn-tree">Отправить фотографии</button>
-            </div>
             <div className='inputBlock'>
                 <input type="file" id="file1" onChange={handleFileChange} multiple /> {/* Указываем атрибут multiple */}
                 <div className='uploadedImages'>
@@ -60,6 +57,9 @@ function TreeWindow() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className='button-tree'>
+                <button className="btn-tree dark-theme-btn-tree">Отправить фотографии</button>
             </div>
         </div>
     );
