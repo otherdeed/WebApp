@@ -1,0 +1,66 @@
+.userData{
+    display: flex;
+    border: 2px solid black;
+    padding-left: 20px;
+    font-size: 20px;
+}
+p{
+    margin-right: 1%;
+}
+.functionalBtn{
+    height: 100%;
+    display: flex;
+}
+.fucnBtn{
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+.inputReject{
+    height: 100%;
+    padding: 12px 20px;
+    margin-left: 5%;
+    margin-top: 3%;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden; 
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
+}
+.btnApprove{
+    background-color: #4CAF50;
+}
+.btnSend{
+    background-color: #027eff;
+    font-size: 15px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2%;
+    margin-left: 2%;
+    cursor: pointer;
+    height: 50px;
+}
+.btnReject{
+    background-color: #ef5a4f;
+}
