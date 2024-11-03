@@ -79,14 +79,11 @@ class App extends React.Component {
       }
     }
   }
-  reasonMess(reason){
-    console.log(reason);
-  }
   render() {
     if(this.state.thisEmployee.access === 'administrator'){
       return (
         <div className="App">
-          <RegistrationBlock registrationUsers={this.state.applicationsregistration} onRemoveInListUser={this.removeInListUser} reasonMess={this.state.callBackMess}/>
+          <RegistrationBlock registrationUsers={this.state.applicationsregistration} onRemoveInListUser={this.removeInListUser}/>
         </div>
       );
     }else if(this.state.thisEmployee.access === 'seniorModerator'){

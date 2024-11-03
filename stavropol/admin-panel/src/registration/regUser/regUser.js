@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './regUser.css';
 
-function RegUser ({ name, nickName, number, email, tgId, onRemoveInListUser, reasonMess}) {
+function RegUser ({ name, nickName, number, email, tgId, onRemoveInListUser}) {
     const [isRejectInputVisible, setRejectInputVisible] = useState(false);
     const [reason, setReason] = useState('');
     const [error, setError] = useState('');
@@ -28,9 +28,7 @@ function RegUser ({ name, nickName, number, email, tgId, onRemoveInListUser, rea
         
         console.log('Пользователь ' + name + ', причина отказа:', reason);
         setRejectInputVisible(false);
-        setReason('');
-        onRemoveInListUser (tgId,reason);
-        reasonMess(reason)
+        onRemoveInListUser (tgId);
         setReason('')
     };
 
