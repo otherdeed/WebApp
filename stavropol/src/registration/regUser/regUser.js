@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './regUser.css';
 
-function RegUser ({ name, username, phone, email, tgId, onRemoveInListUser}) {
+function RegUser ({ name, username, phone, email, tgId, created_at, onRemoveInListUser}) {
     const [isRejectInputVisible, setRejectInputVisible] = useState(false);
     const [reason, setReason] = useState('');
     const [error, setError] = useState('');
@@ -40,6 +40,7 @@ function RegUser ({ name, username, phone, email, tgId, onRemoveInListUser}) {
                 <p>Номер: <b>{phone}</b></p>
                 <p>Почта: <b>{email}</b></p>
                 <p>Telegram ID: <b>{tgId}</b></p>
+                <p>Date: <b>{created_at}</b></p>
                 <div className='functionalBtn'>
                     <button className="fucnBtn btnApprove" onClick={approveApplication}>Одобрить</button>
                     <button className="fucnBtn btnReject" onClick={rejectApplication}>Отказать</button>

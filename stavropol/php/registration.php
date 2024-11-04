@@ -6,6 +6,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 $pdo = new PDO("mysql:host=localhost;dbname=123123", "root", "root");
 
+
 function isUnique($field, $value, $pdo) {
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE $field = :value");
     $stmt->execute(['value' => $value]);
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt = $pdo->prepare("INSERT INTO pending_users (name, email, phone, username, tgId) VALUES (:name, :email, :phone, :username, :tgId)");
-    $stmt->execute(['name' => $name, 'email' => $email, 'phone' => $phone, 'username' => $username, 'tdId' => $tgId]);
+    $stmt->execute(['name' => $name, 'email' => $email, 'phone' => $phone, 'username' => $username, 'tgId' => $tgId]);
 
     echo json_encode(["status" => "success", "message" => "Заявка на регистрацию отправлена. Ожидайте подтверждения"]);
 }

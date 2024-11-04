@@ -19,7 +19,7 @@ function RegistrationWindow (props){
     };
     const registerUser  = async () => {
         try {
-            const response = await fetch("http://localhost:8888/WebApp/stavropol/php/registration.php", {
+            const response = await fetch("http://localhost:8888/stavropol/php/registration.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),

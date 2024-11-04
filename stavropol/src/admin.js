@@ -26,7 +26,7 @@ class Admin extends React.Component {
   }
   loadPendingUsers = async () => {
     try {
-      const response = await fetch("http://localhost:8888/reg-admin/my-app/php/getPendingUsers.php");
+      const response = await fetch("http://localhost:8888/stavropol/php/getPendingUsers.php");
       const data = await response.json();
       this.setState({ applicationsregistration: data.pendingUsers || []});
     } catch (error) {
@@ -38,16 +38,16 @@ class Admin extends React.Component {
     fetch('https://ipapi.co/json/')
       .then(response => response.json())
       .then(data => {
-        this.setState({ myIp: data.ip }); // Сохраняем IP-адрес в состоянии
+        this.setState({ myIp: data.ip });
       })
       .catch(error => console.error('Error fetching IP:', error));
     this.handleAuthorization();
     this.loadPendingUsers()
     const interval = setInterval(() => {
-      this.loadPendingUsers(); // Обновление заявок каждые 5 секунд
+      this.loadPendingUsers();
     }, 5000);
 
-    return () => clearInterval(interval); // Очистка интервала при размонтировании компонента
+    return () => clearInterval(interval);
   }
 
   removeInListUser (tgId, reason) {
