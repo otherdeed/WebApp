@@ -1,0 +1,158 @@
+.treeWindow {
+  width: 90%;
+  height: 90%;
+  position: fixed;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: 0.5s;
+  padding: 20px; /* Отступы */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень */
+  overflow-y: scroll;
+}
+.error {
+  text-align: center;
+  transition: 0.5s;
+  color: #d12121;
+  font-size: 21px;
+}
+.close {
+  cursor: pointer;
+  align-self: flex-end; /* Выравнивание кнопки закрытия */
+  font-size: 24px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center; /* Выравнивание заголовка по центру */
+}
+
+.container-tree {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.examplePhoto {
+  width: 40%;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+  color: black;
+  margin-top: 4%;
+  text-align: center;
+  border-radius: 8px; /* Скругленные углы */
+  padding: 10px; /* Отступы внутри */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+.description {
+  width: 100%;
+  font-size: 15px;
+  margin-top: 4%;
+  text-align: center;
+}
+
+.btn-tree {
+  text-align: center;
+  margin-top: 5%;
+  font-size: 20px;
+  width: 80%;
+  height: 40px; /* Увеличенная высота кнопки */
+  border-radius: 10px;
+  border: none;
+  color: white;
+  transition: background-color 0.3s;
+  margin-left: 10%;
+}
+
+.uploadedImages {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* создаем 3 колонки, каждая из которых занимает 1 часть свободного пространства */
+  grid-gap: 10px; /* добавляем отступ между блоками */
+}
+
+.uploadedImage {
+  width: 100%;
+  height: 150px;
+  color: black;
+  margin-top: 4%;
+  text-align: center;
+  border-radius: 8px; /* Скругленные углы */
+  /* padding: 10px; */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+.uploadedImage img {
+  width: 100%; /* Изображение занимает всю ширину контейнера */
+  height: 100%; /* Сохраняет пропорции */
+  display: block; /* Убираем лишние отступы снизу */
+  border-radius: 8px;
+}
+.dark-theme-btn-tree {
+  background-color: white;
+  color: black;
+}
+.light-theme-btn-tree {
+  background-color: rgb(36 129 204);
+  color: white;
+}
+.dark-theme-treeWindow {
+  background-color: rgba(128, 128, 128, 0.9);
+}
+.light-theme-treeWindow {
+  background-color: rgba(108, 172, 230, 0.9); /* Полупрозрачный фон */
+}
+.custom-file-input {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+  margin-top: 4%;
+}
+
+.custom-file-label {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  color: black;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.blockInput {
+  margin-left: 23%;
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible; /* Показать элемент */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}

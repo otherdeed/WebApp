@@ -1,0 +1,24 @@
+body{
+    margin: 0 auto;
+    background-color: #18222d;
+    transition: 0.5s;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.dark-theme{
+    background-color: #18222d;
+}
+.light-theme{
+    background-color: white;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden; /* Скрыть элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible; /* Показать элемент */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Переход для анимации */
+}

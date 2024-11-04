@@ -1,0 +1,33 @@
+.notificationsWindows{
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: 0.5s;
+    padding: 20px; /* Отступы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Тень */
+    overflow: scroll;
+}
+.notificationsWindows p{
+    text-align: center;
+}
+.close{
+   cursor: pointer;
+    align-self: flex-end; /* Выравнивание кнопки закрытия */
+    font-size: 24px;
+    margin-bottom: 5%;
+}
+.dark-theme-notificationsWindows{
+    background-color: rgba(128, 128, 128, 0.9);
+}
+.light-theme-notificationsWindows{
+    background-color: rgba(108, 172, 230, 0.9); /* Полупрозрачный фон */
+}
