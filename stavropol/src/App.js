@@ -18,7 +18,8 @@ class App extends React.Component {
         this.changeStatusSetting = this.changeStatusSetting.bind(this);
     }
     getInitialRegWindowState() {
-        return JSON.parse(localStorage.getItem('isOpenRegWindow')) || false;
+        // return JSON.parse(localStorage.getItem('isOpenRegWindow')) || false;
+        return false; 
     }
     getInitialNotifications() {
         return [

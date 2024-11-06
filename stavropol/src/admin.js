@@ -19,7 +19,6 @@ class Admin extends React.Component {
       callBackMess:'',
       statusMessage:''
     };
-    this.removeInListUser = this.removeInListUser.bind(this);
     this.handleAuthorization = this.handleAuthorization.bind(this);
     this.addHistory = this.addHistory.bind(this);
     this.loadPendingUsers = this.loadPendingUsers.bind(this);
@@ -48,13 +47,6 @@ class Admin extends React.Component {
     }, 5000);
 
     return () => clearInterval(interval);
-  }
-
-  removeInListUser (tgId, reason) {
-    this.setState(prevState => ({
-      applicationsregistration: prevState.applicationsregistration.filter(app => app.tgId !== tgId)
-    }));
-    this.addHistory('reject', tgId, this.state.myIp, reason)
   }
   addHistory(action, tgId, ip, mess = '') {
     const date = new Date().toISOString();
@@ -90,7 +82,7 @@ class Admin extends React.Component {
     if(this.state.thisEmployee.access === 'administrator'){
       return (
         <div className="App">
-          <RegistrationBlock registrationUsers={this.state.applicationsregistration} onRemoveInListUser={this.removeInListUser}/>
+          <RegistrationBlock registrationUsers={this.state.applicationsregistration}/>
         </div>
       );
     }else if(this.state.thisEmployee.access === 'seniorModerator'){
