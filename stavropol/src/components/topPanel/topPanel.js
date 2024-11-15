@@ -2,7 +2,9 @@ import './topPanel.css';
 import NoficationWindow from '../noficationWindow/noficationWindow';
 import SettingWindow from '../settingWindow/settingWindow';
 import { useState , useEffect } from 'react';
-function TopPanel({ notifications, onRemoveNotification, setting, changeStatusSetting}) {
+import { useSelector } from'react-redux';
+function TopPanel({setting, changeStatusSetting}) {
+    const notifications = useSelector(state => state.notifications.notifications)
     const[count, setCount] = useState(notifications.length);
     useEffect(() => {
         setCount(notifications.length);
@@ -13,7 +15,7 @@ function TopPanel({ notifications, onRemoveNotification, setting, changeStatusSe
     }
     return (
         <div>
-            <NoficationWindow notifications={notifications} onRemoveNotification={onRemoveNotification} /> 
+            <NoficationWindow/> 
             <SettingWindow setting={setting} changeStatusSetting={changeStatusSetting}/>
             <div className="topPanel">
                 <div className="containerTop">

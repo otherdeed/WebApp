@@ -14,7 +14,6 @@ class App extends React.Component {
             countNotifications: this.getInitialNotifications().length
         };
         this.handleRegistrationSuccess = this.handleRegistrationSuccess.bind(this);
-        this.removeNotification = this.removeNotification.bind(this);
         this.changeStatusSetting = this.changeStatusSetting.bind(this);
     }
     getInitialRegWindowState() {
@@ -58,16 +57,6 @@ class App extends React.Component {
     handleRegistrationSuccess() {
         this.setState({ isOpenRegWindow: true, registerAnswers: false });
     }
-
-    removeNotification = (id) => {
-        this.setState(prevState => {
-            const updatedNotifications = prevState.notifications.filter(notification => notification.id !== id);
-            return {
-                notifications: updatedNotifications,
-                countNotifications: updatedNotifications.length,
-            };
-        });
-    };
     changeStatusSetting(id) {
         this.setState((prevState) => {
             const updatedSettings = prevState.setting.map(setting => 

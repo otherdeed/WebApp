@@ -1,51 +1,16 @@
 import './registrationWindow.css';
-import React,{useState} from 'react';
-
-function RegistrationWindow (props){
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        username: "",
-        tgId: "",
-    });
-    const [statusMessage, setStatusMessage] = useState("");
+import React from 'react';
+import { updateFormData, regUser } from '../../store/registrationSlice';
+import { useDispatch, useSelector } from 'react-redux';
+function RegistrationWindow (){
+    const dispatch = useDispatch();
+    const formData = useSelector(state => state.registration.registrationData);
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
+        dispatch(updateFormData({ name, value }))
     };
     const registerUser  = async () => {
-        try {
-            const response = await fetch("http://localhost:8888/stavropol/php/registration.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
-    
-            if (!response.ok) {
-                throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
-            }
-    
-            const data = await response.json();
-            setStatusMessage(data.message);
-    
-            const blockReg = document.querySelector('.blockReg');
-            const textReg = document.querySelector('.textReg');
-            const resMess = 'Почта, телефон или имя пользователя уже существуют';
-    
-            if (data.message !== resMess) {
-                blockReg.classList.add('hidden');
-                textReg.classList.remove('hidden'); 
-                textReg.classList.add('visible');
-            }
-            props.onSuccess();
-            localStorage.setItem('isOpenRegWindow', true);
-        } catch (error) {
-            setStatusMessage(`Ошибка регистрации: ${error.message}`);
-        }
+        dispatch(regUser());
     };
     function Close(tagName){
         const elem = document.querySelector('.'+tagName)
@@ -70,7 +35,7 @@ function RegistrationWindow (props){
                             <input type="tel" name="phone" id="number" className="inputReg" placeholder="Введите номер" value={formData.phone} onChange={handleChange} required/>
                             <input type='text' name='username' className="inputReg" placeholder="Придумайте уникальное имя" value={formData.username} onChange={handleChange} required/>
                             <input type='text' name='tgId' className="inputReg" placeholder="telegramID" value={formData.tgId} onChange={handleChange} required/>
-                            <div className="resMessage">{statusMessage}</div>
+                            <div className="resMessage">{formData.statusMessage}</div>
                             <button className="btnReg dark-theme-regWindow-btnReg" type='submit'>Зарегистрироваться</button>
                         </form>
                     </div>
@@ -79,7 +44,7 @@ function RegistrationWindow (props){
                 <div className="close-reg-window">
                     <div onClick={() =>Close('regWindow')} >✖</div>
                 </div>
-                    <p>{statusMessage}</p>
+                    <p>{formData.statusMessage}</p>
                 </div>
             </div>
         );

@@ -1,11 +1,18 @@
 import './noficationWindow.css';
 import NoficationBlock from './noficationBlock/noficationBlock';
+import { removeNotification } from '../../store/notificationSlice';
+import { useDispatch, useSelector } from 'react-redux';
+function NoficationWindow() {
+    const dispatch = useDispatch();
+    const notifications = useSelector(state => state.notifications.notifications);
 
-function NoficationWindow({ notifications = [], onRemoveNotification}) {
     function Close(tagName){
         const elem = document.querySelector('.'+tagName)
         elem.classList.add('hidden')
     }
+    const onRemoveNotification = (id) => {
+        dispatch(removeNotification(id));
+    };
     return (
         <div className='notificationsWindows dark-theme-notificationsWindows hidden'>
             <div className='close'>
