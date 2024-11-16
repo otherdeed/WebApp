@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './regUser.css';
-
+import { useDispatch, useSelector } from 'react-redux';
 function RegUser ({ name, username, phone, email, tgId, created_at, id}) {
     const [isRejectInputVisible, setRejectInputVisible] = useState(false);
     const [reason, setReason] = useState('');

@@ -1,107 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import RegistrationBlock from './registration/registration';
+import { getMyIp, thisEmployee} from './store/admin/adminSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-class Admin extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      workers: [
-        { access: 'moderator', login: 'mod', password: '123', name:'Ivan', surname:'Ivanov' },
-        { access: 'seniorModerator', login: 'senMod', password: '321', name:'Denis', surname:'Denisov' },
-        { access: 'administrator', login: 'admin', password: '111', name:'Timur', surname:'Timurov' }
-      ],
-      thisEmployee:new Object(),
-      thisHistory:[],
-      isAuthorized: false,
-      applicationsregistration:[],
-      myIp:'',
-      callBackMess:'',
-      statusMessage:''
-    };
-    this.handleAuthorization = this.handleAuthorization.bind(this);
-    this.addHistory = this.addHistory.bind(this);
-    this.loadPendingUsers = this.loadPendingUsers.bind(this);
-  }
-  loadPendingUsers = async () => {
+const Admin = () => {
+  const [applicationsregistration, setApplicationsRegistration] = useState([]);
+  const dispatch = useDispatch();
+  const workers = useSelector(state => state.admin.workers)
+  const thisEmployeer = useSelector(state => state.admin.thisEmployee)
+  const loadPendingUsers = async () => {
     try {
       const response = await fetch("http://localhost:8888/stavropol/php/getPendingUsers.php");
       const data = await response.json();
-      this.setState({ applicationsregistration: data.pendingUsers || []});
+      setApplicationsRegistration(data.pendingUsers || []);
     } catch (error) {
-      this.state.statusMessage= "Ошибка загрузки данных пользователей"
-      console.error("Ошибка при загрузке пользователей:", error); // вывод в консоль для отладки
+      console.error("Ошибка при загрузке пользователей:", error);
     }
   };
-  componentDidMount() {
-    fetch('https://ipapi.co/json/')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ myIp: data.ip });
-      })
-      .catch(error => console.error('Error fetching IP:', error));
-    this.handleAuthorization();
-    this.loadPendingUsers()
-    const interval = setInterval(() => {
-      this.loadPendingUsers();
-    }, 5000);
 
-    return () => clearInterval(interval);
-  }
-  addHistory(action, tgId, ip, mess = '') {
-    const date = new Date().toISOString();
-    const newHistoryEntry = {
-      employee: this.state.thisEmployee.name,
-      action: action,
-      userId: tgId,
-      date: date,
-      ip: ip,
-      message: mess
-    };
-    this.setState(prevState => ({
-      thisHistory: [...prevState.thisHistory, newHistoryEntry]
-    }));
-  }
-  handleAuthorization() {
+  const handleAuthorization = () => {
     let isAuthenticated = false;
 
     while (!isAuthenticated) {
-      const login = prompt('Enter your login:');
-      const password = prompt('Enter your password:');
-      const user = this.state.workers.find(worker => worker.login === login && worker.password === password);
+      const login = prompt('Введите ваш логин:');
+      const password = prompt('Введите ваш пароль:');
+
+      const user = workers.find(worker => worker.login === login && worker.password === password);
       if (user) {
-        this.setState({ message: `Welcome ${user.access}!`, isAuthorized: true });
+        console.log(user);
+        dispatch(thisEmployee(user)); 
         isAuthenticated = true;
-        this.setState({ thisEmployee: user});
       } else {
-        this.setState({ message: 'Invalid login or password!' });
+        alert('Неверный логин или пароль!');
       }
     }
+  };
+
+  useEffect(() => {
+    const fetchIp = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        dispatch(getMyIp(data.ip))
+      } catch (error) {
+        console.error('Ошибка при получении IP:', error);
+      }
+    };
+
+    fetchIp();
+    handleAuthorization();
+    loadPendingUsers();
+    
+    const interval = setInterval(() => {
+      loadPendingUsers();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+  if (thisEmployeer.access === 'administrator') {
+    return (
+      <div className="App">
+        <RegistrationBlock registrationUsers={applicationsregistration} />
+      </div>
+    );
+  } else if (thisEmployeer.access === 'seniorModerator' || thisEmployeer.access === 'moderator') {
+    return (
+      <div className="App">
+        <h1>Добро пожаловать, {thisEmployeer.name}!</h1>
+        <p>Вы {thisEmployeer.access}.</p>
+      </div>
+    );
   }
-  render() {
-    if(this.state.thisEmployee.access === 'administrator'){
-      return (
-        <div className="App">
-          <RegistrationBlock registrationUsers={this.state.applicationsregistration}/>
-        </div>
-      );
-    }else if(this.state.thisEmployee.access === 'seniorModerator'){
-      return (
-        <div className="App">
-          <h1>Welcome, {this.state.thisEmployee.name}!</h1>
-          <p>You are a {this.state.thisEmployee.access}.</p>
-        </div>
-      );
-    }
-    else if(this.state.thisEmployee.access === 'moderator'){
-      return (
-        <div className="App">
-          <h1>Welcome, {this.state.thisEmployee.name}!</h1>
-          <p>You are a {this.state.thisEmployee.access}.</p>
-        </div>
-      );
-    }
-  }
-}
+
+  return null; // Возвращаем null, если нет авторизованного пользователя
+};
 
 export default Admin;

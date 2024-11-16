@@ -1,6 +1,6 @@
 import './noficationWindow.css';
 import NoficationBlock from './noficationBlock/noficationBlock';
-import { removeNotification } from '../../store/notificationSlice';
+import { removeNotification } from '../../store/client/notificationSlice';
 import { useDispatch, useSelector } from 'react-redux';
 function NoficationWindow() {
     const dispatch = useDispatch();

@@ -1,16 +1,33 @@
 import './registrationWindow.css';
 import React from 'react';
-import { updateFormData, regUser } from '../../store/registrationSlice';
+import { updateFormData, setStatusMessage} from '../../store/client/registrationSlice';
 import { useDispatch, useSelector } from 'react-redux';
 function RegistrationWindow (){
     const dispatch = useDispatch();
     const formData = useSelector(state => state.registration.registrationData);
+    const statusMess = useSelector(state => state.registration.statusMessage);
     const handleChange = (e) => {
         const { name, value } = e.target;
-        dispatch(updateFormData({ name, value }))
+        dispatch(updateFormData({ name, value }));
     };
+
     const registerUser  = async () => {
-        dispatch(regUser());
+        try {
+            const response = await fetch("http://localhost:8888/stavropol/php/registration.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            dispatch(setStatusMessage(data.message));
+        } catch (error) {
+            dispatch(setStatusMessage(`Ошибка регистрации: ${error.message}`));
+        }
     };
     function Close(tagName){
         const elem = document.querySelector('.'+tagName)
@@ -35,7 +52,7 @@ function RegistrationWindow (){
                             <input type="tel" name="phone" id="number" className="inputReg" placeholder="Введите номер" value={formData.phone} onChange={handleChange} required/>
                             <input type='text' name='username' className="inputReg" placeholder="Придумайте уникальное имя" value={formData.username} onChange={handleChange} required/>
                             <input type='text' name='tgId' className="inputReg" placeholder="telegramID" value={formData.tgId} onChange={handleChange} required/>
-                            <div className="resMessage">{formData.statusMessage}</div>
+                            <div className="resMessage">{statusMess}</div>
                             <button className="btnReg dark-theme-regWindow-btnReg" type='submit'>Зарегистрироваться</button>
                         </form>
                     </div>
@@ -44,7 +61,7 @@ function RegistrationWindow (){
                 <div className="close-reg-window">
                     <div onClick={() =>Close('regWindow')} >✖</div>
                 </div>
-                    <p>{formData.statusMessage}</p>
+                    <p>{statusMess}</p>
                 </div>
             </div>
         );

@@ -9,9 +9,7 @@ class App extends React.Component {
         this.state = {
             isOpenRegWindow: this.getInitialRegWindowState(),
             registerAnswers: false,
-            notifications: this.getInitialNotifications(),
             setting: this.getInitialSettings(),
-            countNotifications: this.getInitialNotifications().length
         };
         this.handleRegistrationSuccess = this.handleRegistrationSuccess.bind(this);
         this.changeStatusSetting = this.changeStatusSetting.bind(this);
@@ -20,17 +18,6 @@ class App extends React.Component {
         // return JSON.parse(localStorage.getItem('isOpenRegWindow')) || false;
         return false; 
     }
-    getInitialNotifications() {
-        return [
-            { id: 1, message: 'Уведомление 1' },
-            { id: 2, message: 'Уведомление 2' },
-            { id: 3, message: 'Уведомление 3' },
-            { id: 4, message: 'Уведомление 4' },
-            { id: 5, message: 'Уведомление 5' },
-            { id: 6, message: 'Уведомление 6' }
-        ];
-    }
-
     getInitialSettings() {
         const defaultSettings = [
             { id: 1, message: 'Темная тема' },
