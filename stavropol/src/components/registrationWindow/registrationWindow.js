@@ -3,6 +3,7 @@ import React from 'react';
 import { updateFormData, setStatusMessage} from '../../store/client/registrationSlice';
 import { useDispatch, useSelector } from 'react-redux';
 function RegistrationWindow (){
+    const tg = window.Telegram.WebApp;
     const dispatch = useDispatch();
     const formData = useSelector(state => state.registration.registrationData);
     const statusMess = useSelector(state => state.registration.statusMessage);
@@ -51,8 +52,9 @@ function RegistrationWindow (){
                             <input type="email" name="email" id="email" className="inputReg" placeholder="Введите почту" value={formData.email} onChange={handleChange} required/>
                             <input type="tel" name="phone" id="number" className="inputReg" placeholder="Введите номер" value={formData.phone} onChange={handleChange} required/>
                             <input type='text' name='username' className="inputReg" placeholder="Придумайте уникальное имя" value={formData.username} onChange={handleChange} required/>
-                            <input type='text' name='tgId' className="inputReg" placeholder="telegramID" value={formData.tgId} onChange={handleChange} required/>
+                            <input type='text' name='tgId' className="inputReg" placeholder="telegramID" value={tg.initDataUnsafe?.user?.id} onChange={handleChange} required/>
                             <div className="resMessage">{statusMess}</div>
+                            {tg.platform}
                             <button className="btnReg dark-theme-regWindow-btnReg" type='submit'>Зарегистрироваться</button>
                         </form>
                     </div>

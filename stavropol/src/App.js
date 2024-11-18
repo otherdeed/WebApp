@@ -1,24 +1,18 @@
 import './App.css';
-import React from 'react';
-import TopPanel from '../src/components/topPanel/topPanel';
-import BottomPanel from '../src/components/bottomPanel/bottomPanel';
+import React, { useState, useEffect } from 'react';
+import TopPanel from './components/topPanel/topPanel';
+import BottomPanel from './components/bottomPanel/bottomPanel';
 import CenterButton from './components/centerButton/centerButton';
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpenRegWindow: this.getInitialRegWindowState(),
-            registerAnswers: false,
-            setting: this.getInitialSettings(),
-        };
-        this.handleRegistrationSuccess = this.handleRegistrationSuccess.bind(this);
-        this.changeStatusSetting = this.changeStatusSetting.bind(this);
-    }
-    getInitialRegWindowState() {
+const App = () => {
+    const [isOpenRegWindow, setIsOpenRegWindow] = useState(getInitialRegWindowState());
+    const [registerAnswers, setRegisterAnswers] = useState(false);
+    const [setting, setSetting] = useState(getInitialSettings());
+    function getInitialRegWindowState() {
         // return JSON.parse(localStorage.getItem('isOpenRegWindow')) || false;
         return false; 
     }
-    getInitialSettings() {
+
+    function getInitialSettings() {
         const defaultSettings = [
             { id: 1, message: 'Темная тема' },
             { id: 2, message: 'NotWork' },
@@ -36,27 +30,29 @@ class App extends React.Component {
         }));
     }
 
-    componentDidMount() {
+    useEffect(() => {
         const isDarkTheme = JSON.parse(localStorage.getItem(1));
-        this.performingSettings(1, isDarkTheme);
-    }
+        performingSettings(1, isDarkTheme);
+    }, []);
 
-    handleRegistrationSuccess() {
-        this.setState({ isOpenRegWindow: true, registerAnswers: false });
-    }
-    changeStatusSetting(id) {
-        this.setState((prevState) => {
-            const updatedSettings = prevState.setting.map(setting => 
+    const handleRegistrationSuccess = () => {
+        setIsOpenRegWindow(true);
+        setRegisterAnswers(false);
+    };
+
+    const changeStatusSetting = (id) => {
+        setSetting(prevSettings => {
+            const updatedSettings = prevSettings.map(setting => 
                 setting.id === id ? { ...setting, status: !setting.status } : setting
             );
-            const newStatus = !prevState.setting.find(setting => setting.id === id).status;
+            const newStatus = !prevSettings.find(setting => setting.id === id).status;
             localStorage.setItem(id, JSON.stringify(newStatus));
-            this.performingSettings(id, newStatus);
-            return { setting: updatedSettings };
+            performingSettings(id, newStatus);
+            return updatedSettings;
         });
-    }
+    };
 
-    performingSettings(id, isDarkTheme) {
+    const performingSettings = (id, isDarkTheme) => {
         const themeClass = isDarkTheme ? 'dark-theme' : 'light-theme';
         const oppositeThemeClass = isDarkTheme ? 'light-theme' : 'dark-theme';
 
@@ -73,43 +69,43 @@ class App extends React.Component {
         document.querySelector('.textReg').classList.add(`${themeClass}-regWindow`);
         document.querySelector('.textReg').classList.remove(`${oppositeThemeClass}-regWindow`);
         document.querySelector('.btnReg').classList.add(`${themeClass}-regWindow-btnReg`);
-        document.querySelector('.btnReg').classList.remove(`${oppositeThemeClass}-regWindow-btnReg`)
+        document.querySelector('.btnReg').classList.remove(`${oppositeThemeClass}-regWindow-btnReg`);
         document.querySelector('.centerButton').classList.add(`${themeClass}-central-btn`);
-        document.querySelector('.centerButton').classList.remove(`${oppositeThemeClass}-central-btn`)
+        document.querySelector('.centerButton').classList.remove(`${oppositeThemeClass}-central-btn`);
         document.querySelector('.treeWindow').classList.add(`${themeClass}-treeWindow`);
-        document.querySelector('.treeWindow').classList.remove(`${oppositeThemeClass}-treeWindow`)
+        document.querySelector('.treeWindow').classList.remove(`${oppositeThemeClass}-treeWindow`);
         document.querySelector('.btn-tree').classList.add(`${themeClass}-btn-tree`);
-        document.querySelector('.btn-tree').classList.remove(`${oppositeThemeClass}-btn-tree`)
+        document.querySelector('.btn-tree').classList.remove(`${oppositeThemeClass}-btn-tree`);
+        
         const buttonsBottomPanel = document.querySelectorAll('.btnBottom');
         buttonsBottomPanel.forEach(button => {
             button.classList.add(`${themeClass}-bottom-panel-btn`);
             button.classList.remove(`${oppositeThemeClass}-bottom-panel-btn`);
         });
+
         const buttonsTopPanel = document.querySelectorAll('.btnTop');
         buttonsTopPanel.forEach(button => {
             button.classList.add(`${themeClass}-top-panel-btn`);
             button.classList.remove(`${oppositeThemeClass}-top-panel-btn`);
         });
-    }
+    };
 
-    render() {
-        return (
-            <div className="App">
-                <TopPanel 
-                    notifications={this.state.notifications} 
-                    onRemoveNotification={this.removeNotification} 
-                    setting={this.state.setting} 
-                    changeStatusSetting={this.changeStatusSetting}
-                />
-                <CenterButton/>
-                <BottomPanel 
-                    onSuccess={this.handleRegistrationSuccess} 
-                    statusCheck={this.state} 
-                    countNotifications={this.state.countNotifications} 
-                />
-            </div>
-        );
-    }
-}
+    return (
+        <div className="App">
+            <TopPanel 
+                notifications={[]}  // Замените на актуальные данные, если нужно
+                onRemoveNotification={() => {}} // Замените на актуальную функцию, если нужно
+                setting={setting} 
+                changeStatusSetting={changeStatusSetting}
+            />
+            <CenterButton />
+            <BottomPanel 
+                onSuccess={handleRegistrationSuccess} 
+                statusCheck={{ isOpenRegWindow, registerAnswers }} 
+                countNotifications={0} // Замените на актуальные данные, если нужно
+            />
+        </div>
+    );
+};
 
 export default App;

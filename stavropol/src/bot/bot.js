@@ -1,8 +1,7 @@
 require('dotenv').config()
 const {Bot, GrammyError, HttpError} = require('grammy')
-
 const bot = new Bot(process.env.BOT_API_KEY)
-const webUrl = 'https://192.168.23.13:3000'
+const webUrl = 'https://huge-baths-rule.loca.lt/'
 bot.api.setMyCommands([
     {
         command: 'start',
