@@ -3,10 +3,24 @@ import React, { useState, useEffect } from 'react';
 import TopPanel from './components/topPanel/topPanel';
 import BottomPanel from './components/bottomPanel/bottomPanel';
 import CenterButton from './components/centerButton/centerButton';
+import {useDispatch} from 'react-redux';
+import { addDataUser } from './store/client/telegramDataSlice';
 const App = () => {
     const [isOpenRegWindow, setIsOpenRegWindow] = useState(getInitialRegWindowState());
     const [registerAnswers, setRegisterAnswers] = useState(false);
     const [setting, setSetting] = useState(getInitialSettings());
+    const tg = window.Telegram.WebApp;
+    const user = tg.initDataUnsafe
+    const userData = {
+        userID : user.id,
+        platform: user.platform,
+        userName: user.username,
+        user: user.first_name,
+        chatId: user.chat_id
+    }
+    const dispatch = useDispatch();
+    dispatch(addDataUser(userData));
+    console.log('User data -----'+ userData.userID)
     function getInitialRegWindowState() {
         // return JSON.parse(localStorage.getItem('isOpenRegWindow')) || false;
         return false; 
